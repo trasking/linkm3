@@ -6,19 +6,20 @@
 //  Copyright (c) 2015 James Bradford Trask. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SplitViewController.h"
+#import "LMCollectionViewCell.h"
 
 NSString * const kPhotoCell = @"PhotoCell";
 NSString * const kVideoCell = @"VideoCell";
 
-@interface ViewController ()
+@interface SplitViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *videoCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
 
 @end
 
-@implementation ViewController
+@implementation SplitViewController
 
 #pragma mark - Initialization
 
@@ -40,13 +41,15 @@ NSString * const kVideoCell = @"VideoCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return 50;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = self.videoCollectionView == collectionView ? kVideoCell : kPhotoCell;
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    NSString *label = self.videoCollectionView == collectionView ? @"V" : @"P";
+    LMCollectionViewCell *cell = (LMCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.label.text = [NSString stringWithFormat:@"%@%ld", label, (long)indexPath.row];
     return cell;
 }
 
