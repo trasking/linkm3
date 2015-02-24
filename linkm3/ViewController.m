@@ -8,20 +8,48 @@
 
 #import "ViewController.h"
 
+NSString * const kPhotoCell = @"PhotoCell";
+NSString * const kVideoCell = @"VideoCell";
+
 @interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UICollectionView *videoCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
 
 @end
 
 @implementation ViewController
 
+#pragma mark - Initialization
+
 - (void)viewDidLoad {
+    self.photoCollectionView.delegate = self;
+    self.photoCollectionView.dataSource = self;
+    self.videoCollectionView.delegate = self;
+    self.videoCollectionView.dataSource = self;
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UICollectionViewDataSource
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellIdentifier = self.videoCollectionView == collectionView ? kVideoCell : kPhotoCell;
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
 
 @end
