@@ -12,7 +12,7 @@
 NSString * const kPhotoCell = @"PhotoCell";
 NSString * const kVideoCell = @"VideoCell";
 
-@interface SplitViewController ()
+@interface SplitViewController () <UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *videoCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
@@ -28,12 +28,37 @@ NSString * const kVideoCell = @"VideoCell";
     self.photoCollectionView.dataSource = self;
     self.videoCollectionView.delegate = self;
     self.videoCollectionView.dataSource = self;
+    
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(photoDrag:)];
+    [self.view addGestureRecognizer:panGestureRecognizer];
+    
     [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+- (void) photoDrag:(UIPanGestureRecognizer *) gesture
+{
+    CGPoint location = [gesture locationInView:self.videoCollectionView];
+    if ([gesture state] == UIGestureRecognizerStateBegan) {
+        NSLog(@"START: %.0f, %.0f", location.x, location.y);
+    } else if ([gesture state] == UIGestureRecognizerStateChanged) {
+        NSLog(@"DRAG: %.0f, %.0f", location.x, location.y);
+    } else if ([gesture state] == UIGestureRecognizerStateEnded) {
+        NSLog(@"STOP: %.0f, %.0f", location.x, location.y);
+    }
+    NSIndexPath *indexPath = [self.videoCollectionView indexPathForItemAtPoint:location];
+    if (indexPath) {
+        NSLog(@"%@", indexPath);
+    } else {
+        NSLog(@"NO CELL");
+    }
+    
 }
 
 #pragma mark - UICollectionViewDataSource
