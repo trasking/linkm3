@@ -20,9 +20,9 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" canCancelContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gPY-oj-7Hp" userLabel="Photo Collection View">
                                 <rect key="frame" x="0.0" y="20" width="600" height="280"/>
-                                <color key="backgroundColor" red="0.14899766445159912" green="0.0" blue="0.00089815974934026599" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="19Y-Fu-5zf">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="19Y-Fu-5zf">
+                                    <size key="itemSize" width="72" height="72"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -32,27 +32,31 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="P" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yt5-xg-82s" userLabel="Photo Label">
-                                                    <rect key="frame" x="4" y="15" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KBx-pa-Ef5">
+                                                    <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottomMargin" secondItem="KBx-pa-Ef5" secondAttribute="bottom" id="Ele-3V-230"/>
+                                            <constraint firstItem="KBx-pa-Ef5" firstAttribute="top" secondItem="C3r-VZ-1WY" secondAttribute="topMargin" id="NmJ-bO-au9"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="KBx-pa-Ef5" secondAttribute="trailing" id="Qcf-xm-2Xv"/>
+                                            <constraint firstItem="KBx-pa-Ef5" firstAttribute="leading" secondItem="C3r-VZ-1WY" secondAttribute="leadingMargin" id="ooD-Qe-giK"/>
+                                        </constraints>
                                         <connections>
-                                            <outlet property="label" destination="yt5-xg-82s" id="Sx3-cS-ujx"/>
+                                            <outlet property="imageView" destination="KBx-pa-Ef5" id="wON-Gi-kqJ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WvV-ke-8k2" userLabel="Video Collection View">
                                 <rect key="frame" x="0.0" y="300" width="600" height="300"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.14796386659145355" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.23039890825748444" green="0.23039200901985168" blue="0.23039592802524567" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mIW-vw-kgp">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
